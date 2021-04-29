@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.test.entity.User">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="age" property="age" />
+        <result column="sex" property="sex" />
+        <result column="address" property="address" />
+    </resultMap>
+
+    <select id="getDate" resultType="com.test.entity.User">
+        <if test="satrtTime != null">
+            and start_time <![CDATA[ >= ]]> #{startTime,jdbcType=DATE}
+            and start_time <![CDATA[ <= ]]> #{endTime,jdbcType=DATE}
+        </if>
+    </select>
+
+</mapper>
